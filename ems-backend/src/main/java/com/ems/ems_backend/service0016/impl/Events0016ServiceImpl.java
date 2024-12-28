@@ -26,4 +26,10 @@ public class Events0016ServiceImpl implements Events0016Service {
                 new ResourceNotFoundException("Events0016 not found with id: " + Booking_ID));
         return Events0016Mapper.mapToEventsDto0016(events0016);
     }
+    @Overide
+    public List<EventsDto0016> getAllEvents0016() {
+        List<Events0016> events0016 = events0016repository0016.findAll();
+        return events0016.stream().map((events00161) -> Events0016Mapper.mapToEventsDto0016(events00161))
+                .collect(Collectors.toList());
+    }
 }
