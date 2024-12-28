@@ -26,4 +26,16 @@ public class Events0016Controller {
         EventsDto0016 eventsDto0016 = events0016Service.getEvents0016ById(Booking_id);
         return ResponseEntity.ok(eventsDto0016);
     }
+    // Build Get All Events REST API
+    @GetMapping
+    public ResponseEntity<List<EventsDto0016>> getAllEvents0016() {
+        List<EventsDto0016> eventsDto0016 = events0016Service.getAllEvents0016();
+        return ResponseEntity.ok(eventsDto0016);
+    }
+    // Build Update Events REST API
+    @PutMapping("{id}")
+    public ResponseEntity<EventsDto0016> updateEvents0016(@PathVariable("id") Long Booking_id,
+                                                          @RequestBody EventsDto0016 updatedeventsDto0016) {
+        EventsDto0016 eventsDto0016 = events0016Service.updateEvents0016(Booking_id, updatedeventsDto0016);
+        return ResponseEntity.ok(eventsDto0016);
 }

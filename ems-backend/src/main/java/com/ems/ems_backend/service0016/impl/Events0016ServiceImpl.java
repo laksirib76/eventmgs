@@ -32,4 +32,17 @@ public class Events0016ServiceImpl implements Events0016Service {
         return events0016.stream().map((events00161) -> Events0016Mapper.mapToEventsDto0016(events00161))
                 .collect(Collectors.toList());
     }
+    @Override
+    public EventsDto0016 updateEvents0016(Long Booking_id, EventsDto0016 updatedeventsDto0016) {
+        Events0016 events0016 = events0016repository0016.findById(Booking_id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Events0016 not found with id: " + Booking_id));
+        events0016.setBooking_ID(updatedeventsDto0016.getBooking_ID());
+        events0016.setEventID(updatedeventsDto0016.getEventID());
+        events0016.setEventOwnerIDNo(updatedeventsDto0016.getEventOwnerIDNo());
+        events0016.setEventType(updatedeventsDto0016.getEventType());
+        events0016.setEventHeadCount(updatedeventsDto0016.getEventHeadCount());
+        events0016.setDuration(updatedeventsDto0016.getDuration());
+        events0016 updatedEventsobj =  events0016repository0016.save(events0016);
+        return Events0016Mapper.mapToEventsDto0016(updatedEventsobj);
 }
