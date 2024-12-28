@@ -32,10 +32,19 @@ public class Events0016Controller {
         List<EventsDto0016> eventsDto0016 = events0016Service.getAllEvents0016();
         return ResponseEntity.ok(eventsDto0016);
     }
+
     // Build Update Events REST API
     @PutMapping("{id}")
     public ResponseEntity<EventsDto0016> updateEvents0016(@PathVariable("id") Long Booking_id,
                                                           @RequestBody EventsDto0016 updatedeventsDto0016) {
         EventsDto0016 eventsDto0016 = events0016Service.updateEvents0016(Booking_id, updatedeventsDto0016);
         return ResponseEntity.ok(eventsDto0016);
+
+        // Build Delete Events REST API
+        DeleteMapping("{id}")
+        public ResponseEntity<String> deleteEvents0016(@PathVariable("id") Long Booking_ID) {
+            events0016Service.deleteEvents0016(Booking_ID);
+            return ResponseEntity.ok("Events0016 deleted successfully!.");
+        }
+    }
 }

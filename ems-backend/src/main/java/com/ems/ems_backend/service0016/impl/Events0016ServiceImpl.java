@@ -45,4 +45,11 @@ public class Events0016ServiceImpl implements Events0016Service {
         events0016.setDuration(updatedeventsDto0016.getDuration());
         events0016 updatedEventsobj =  events0016repository0016.save(events0016);
         return Events0016Mapper.mapToEventsDto0016(updatedEventsobj);
+
+        @Override
+                public void deleteEvents0016(Long Booking_ID) {
+            Events0016 events0016 = events0016repository0016.findById(Booking_ID)
+                    .orElseThrow(() ->
+                            new ResourceNotFoundException("Events0016 not found with id: " + Booking_ID));
+            events0016repository.delete(events0016);
 }
